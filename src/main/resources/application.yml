@@ -5,11 +5,12 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
-  security:
-    user:
-      name: admin
-      password: 1234
-      roles: USER, ADMIN
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${dbUrl}
