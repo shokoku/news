@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{common/layout}"
+>
+<div layout:fragment="content" class="container my-3">
+  <h4 class="text-center mb-3">회원가입</h4>
+
+  <form th:action="@{/member/join}" th:object="${member}" method="post" >
+
+    <div th:replace="~{common/errors :: formErrorsFragment}"></div>
+
+    <div class="form-floating mb-3">
+      <input type="email" th:field="*{email}" class="form-control" placeholder="이메일" required>
+      <label for="email" class="form-label">이메일</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호" required>
+      <label for="password" class="form-label">비밀번호</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" th:field="*{password2}" class="form-control" placeholder="비밀번호 확인" required>
+      <label for="password2" class="form-label">비밀번호 확인</label>
+
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" th:field="*{name}" class="form-control" placeholder="이름" required>
+      <label for="name" class="form-label">이름</label>
+
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" th:field="*{mobile}" class="form-control" placeholder="핸드폰" required>
+      <label for="mobile" class="form-label">핸드폰</label>
+
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-dark align-self-center">가입</button>
+    </div>
+  </form>
+</div>
+
+</html>
