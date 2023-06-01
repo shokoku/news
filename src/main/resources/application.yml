@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+  security:
+    user:
+      name: admin
+      password: 1234
+      roles: USER, ADMIN
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${dbUrl}
+    username: ${dbUsername}
+    password: ${dbPassword}
