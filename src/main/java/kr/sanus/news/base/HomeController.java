@@ -1,4 +1,4 @@
-package kr.sanus.news;
+package kr.sanus.news.base;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
