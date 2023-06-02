@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +19,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/join")
-    public String joinForm(@ModelAttribute("member") MemberDto memberDto) {
+    public String joinForm(Model model) {
+        model.addAttribute("member",new MemberDto());
         return "member/joinForm";
     }
 
@@ -47,6 +49,12 @@ public class MemberController {
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("MemberDto") MemberDto memberDto) {
         return "member/loginForm";
+    }
+
+    @GetMapping("/detail")
+    public String detail(Model model) {
+        model.addAttribute("member",memberService.findByEmail());
+        return "member/detail";
     }
 
 }
