@@ -1,5 +1,7 @@
 package kr.sanus.news.member;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +24,20 @@ public class MemberService {
     public MemberDto findByEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        return memberRepository.findByEmail(email).get().toDto();
+        Optional<MemberEntity> memberOptional = memberRepository.findByEmail(email);
+        if (memberOptional.isPresent()) {
+            return memberOptional.get().toDto();
+        }
+        return null;
     }
 
+    public void update(MemberDto memberDto) {
+        Optional<MemberEntity> memberOptional = memberRepository.findById(memberDto.getId());
+        if (memberOptional.isPresent()) {
+            MemberEntity memberEntity = memberOptional.get();
+            memberEntity.setName(memberDto.getName());
+            memberEntity.setMobile(memberDto.getMobile());
+            memberRepository.save(memberEntity);
+        }
+    }
 }
