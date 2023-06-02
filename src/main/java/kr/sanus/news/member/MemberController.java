@@ -44,6 +44,9 @@ public class MemberController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/login")
+    public String loginForm(@ModelAttribute("MemberDto") MemberDto memberDto) {
+        return "member/loginForm";
+    }
 
 }
