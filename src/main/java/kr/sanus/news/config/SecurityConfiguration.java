@@ -20,6 +20,7 @@ public class SecurityConfiguration {
         http
             .authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/admin/**").authenticated()
+                .requestMatchers("/member/detail").authenticated()
                 .anyRequest().permitAll()
             )
             .httpBasic(withDefaults())
@@ -27,11 +28,11 @@ public class SecurityConfiguration {
                 .loginPage("/member/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/",true)
                 .permitAll())
             .logout(logout -> logout
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/member/login")
                 .invalidateHttpSession(true));
         return http.build();
     }

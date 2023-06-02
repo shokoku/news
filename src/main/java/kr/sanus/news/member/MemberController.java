@@ -57,4 +57,23 @@ public class MemberController {
         return "member/detail";
     }
 
+    @GetMapping("/edit")
+    public String editForm(Model model) {
+        model.addAttribute("member",memberService.findByEmail());
+        return "member/editForm";
+    }
+
+    @PostMapping("/edit")
+    public String edit(@Valid @ModelAttribute("member")MemberDto memberDto,
+        BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "member/editForm";
+        }
+
+        memberService.update(memberDto);
+        return "redirect:/member/detail";
+    }
+
 }
+
