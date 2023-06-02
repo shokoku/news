@@ -1,6 +1,7 @@
 package kr.sanus.news.member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,9 +9,12 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void join(MemberDto memberDto) {
-        memberRepository.save(memberDto.toEntity());
+        MemberEntity memberEntity = memberDto.toEntity();
+        memberEntity.setPassword(passwordEncoder.encode(memberEntity.getPassword()));
+        memberRepository.save(memberEntity);
     }
 
 }
