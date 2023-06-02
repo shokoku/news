@@ -26,7 +26,7 @@ public class MemberSecurityServiceImpl implements UserDetailsService {
         }
         MemberEntity memberEntity = _memberEntity.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
-        if ("shokoku@outlook.kr".equals(username)) {
+        if ("admin@sanus.kr".equals(username)) {
             authorities.add(new SimpleGrantedAuthority(MemberRole.ADMIN.getValue()));
         } else {
             authorities.add(new SimpleGrantedAuthority(MemberRole.USER.getValue()));

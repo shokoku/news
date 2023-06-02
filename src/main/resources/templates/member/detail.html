@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{common/layout}"
+>
+<div layout:fragment="content" class="container my-3">
+  <h4 class="text-center mb-3">회원정보</h4>
+
+    <div class="form-floating mb-3">
+      <input type="email" th:field="*{member.email}" class="form-control" placeholder="이메일" disabled>
+      <label for="email" class="form-label">이메일</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" th:field="*{member.name}" class="form-control" placeholder="이름" disabled>
+      <label for="name" class="form-label">이름</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" th:field="*{member.mobile}" class="form-control" placeholder="핸드폰" disabled>
+      <label for="mobile" class="form-label">핸드폰</label>
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="btn btn-dark align-self-center"
+              onclick="location.href='editForm.html'"
+              th:onclick="|location.href='@{/member/edit}'|">수정</button>
+    </div>
+</div>
+
+</html>

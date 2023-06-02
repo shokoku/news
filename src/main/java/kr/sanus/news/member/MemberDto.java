@@ -32,6 +32,7 @@ public class MemberDto {
     @NotEmpty(message = "휴대폰 번호를 입력하세요.")
     private String mobile;
 
+
     public MemberEntity toEntity() {
         return MemberEntity.builder()
             .id(id)
