@@ -1,13 +1,12 @@
 package kr.sanus.news;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 @SpringBootTest
 class NewsApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+  @Test
+  void contextLoads() {}
 }
