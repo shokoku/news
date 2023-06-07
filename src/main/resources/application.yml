@@ -13,6 +13,6 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${dbUrl}
-    username: ${dbUsername}
-    password: ${dbPassword}
+    url: jdbc:mysql://localhost:3307/news?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: sanus
+    password: sanus0612

@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  db_master:
+    image: mysql
+    container_name: mysql_news
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sanus0612#
+      MYSQL_DATABASE: news
+      MYSQL_USER: sanus
+      MYSQL_PASSWORD: sanus0612
+    volumes:
+      - ./master_db/data:/var/lib/mysql
+      - ./master_db/config/:/etc/mysql/conf.d
+    ports:
+      - "3307:3306"
